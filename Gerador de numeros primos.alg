@@ -27,7 +27,7 @@ inicio
         fimenquanto
 
         se (Nao Flag) entao
-           escreva(" , ",Primo)
+           escreva(Primo,",")
         fimse
     fimpara
 
