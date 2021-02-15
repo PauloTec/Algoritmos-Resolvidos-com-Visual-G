@@ -1,0 +1,65 @@
+algoritmo "Buscar um número na lista usando BUSCA BINÁRIA"
+// Função : Criar 10 números aleatórios e identificar se o nº inserido pelo usuário se encontra na lista
+// Autor : Engº Diassilua Paulo Simão
+// Data : 15-02-2021
+
+// Seção de Declarações 
+var
+   li,ls,j,vbusca, ind : inteiro
+   v : vetor[1..10] de inteiro
+   achou : logico
+   
+   
+inicio
+
+// Preenche um vetor com 20 números aleatórios, entre 0 e 100
+aleatorio 0, 100
+  para j de 1 ate 10 faca //percorre as posições do vector
+    leia(v[j]) //coloca cada nº aleatório numa posição do vector
+  fimpara
+aleatorio off
+
+// Ordena o vetor, usando Bubblesort e reaproveitando as variáveis
+para li de 1 ate 10 faca //ciclo para percorrer o vector
+   para ls de 1 ate 9 faca
+      se v[ls] > v[ls+1] entao //se o valor nesta posição for maior do que valor da posição seguinte
+         vbusca <- v[ls]   //coloca numa variavel temporária
+         v[ls] <- v[ls+1]  //subistitua os valores nas posições certas
+         v[ls+1] <- vbusca
+      fimse
+   fimpara
+fimpara
+
+// Busca binária
+escreval()
+escreval( "Digite a tecla ESC ou Insira um valor menor do que 0 para terminar programa!! ")
+escreval()
+repita
+   escreva( "Digita o valor a procurar: ")
+   leia( vbusca)
+   se vbusca >= 0 entao
+      li <- 1
+      ls <- 20
+      achou <- Falso
+      enquanto (nao achou) e (li <= ls) faca
+         ind <- (li+ls) \ 2
+         se v[ind] = vbusca entao
+            achou <- verdadeiro
+         senao
+            se v[ind] < vbusca entao
+               li <- ind + 1
+            senao
+               ls <- ind - 1
+            fimse
+         fimse
+      fimenquanto
+      se achou entao
+         escreval( "Valor encontrado na posição ", ind)
+      senao
+         escreval( "O valor ", vbusca, " não está na lista.")
+      fimse
+      // Pausa o programa. Tecle F9 neste ponto para continuar
+      pausa
+   fimse
+ate vbusca < 0
+fimalgoritmo
